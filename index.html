@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Da Avaliação à Intervenção</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #070707;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      background: url('img/hero.jpg') center center / cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1300px;
+      width: 100%;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-text {
+      text-align: left;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 580px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 3px solid rgba(200, 148, 77, 0.4);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(200, 148, 77, 0.1);
+      transition: 0.4s ease;
+      animation: floatImage 6s ease-in-out infinite;
+      justify-self: end;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
+      border-color: #c8944d;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 148, 77, 0.2);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @keyframes floatImage {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .tag {
+      color: #c8944d;
+      letter-spacing: 6px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      background: rgba(200, 148, 77, 0.12);
+      padding: 4px 20px;
+      border-radius: 40px;
+      display: inline-block;
+      backdrop-filter: blur(4px);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.2rem;
+      line-height: 1.05;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      color: #c8944d;
+    }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 24px;
+    }
+
+    .hero-icons {
+      display: flex;
+      gap: 16px;
+      margin: 20px 0 28px;
+      flex-wrap: wrap;
+    }
+
+    .hero-icons div {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(4px);
+      padding: 10px 22px;
+      border-radius: 60px;
+      border: 1px solid rgba(200, 148, 77, 0.2);
+      transition: 0.3s;
+    }
+
+    .hero-icons div:hover {
+      background: rgba(200, 148, 77, 0.08);
+      border-color: #c8944d;
+      transform: translateY(-4px);
+    }
+
+    .hero-icons h3 {
+      color: #c8944d;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .hero-icons p {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 48px;
+      background: linear-gradient(135deg, #c8944d, #e6c179);
+      color: #0a0a0a;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 60px;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 24px rgba(200, 148, 77, 0.25);
+      letter-spacing: 0.5px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 14px 32px rgba(200, 148, 77, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 16px 48px;
+      background: transparent;
+      color: #c8944d;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 60px;
+      transition: 0.3s ease;
+      border: 2px solid #c8944d;
+      cursor: pointer;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: rgba(200, 148, 77, 0.1);
+      box-shadow: 0 14px 32px rgba(200, 148, 77, 0.2);
+    }
+
+    /* === SECTIONS === */
+    section {
+      padding: 80px 0;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      margin-bottom: 12px;
+      color: #c8944d;
+      font-weight: 600;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #c8944d, transparent);
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+
+    /* === INTRO COM FOTO DOS 3 === */
+    .intro {
+      text-align: center;
+      background: linear-gradient(180deg, #070707 0%, #0d0d0d 100%);
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .intro::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200, 148, 77, 0.3), transparent);
+    }
+
+    .intro h2 {
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 2.8rem;
+      color: #fff;
+      margin-bottom: 12px;
+      position: relative;
+      line-height: 1.2;
+    }
+
+    .intro h2 strong {
+      color: #c8944d;
+      position: relative;
+    }
+
+    .intro h2 strong::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #c8944d, transparent);
+    }
+
+    .intro-sub {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .intro-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #c8944d, transparent);
+      margin: 0 auto 40px;
+      border-radius: 2px;
+    }
+
+    .intro-foto-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 3px solid rgba(200, 148, 77, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(200, 148, 77, 0.05);
+      transition: 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .intro-foto-wrapper.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .intro-foto-wrapper:hover {
+      border-color: #c8944d;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), 0 0 60px rgba(200, 148, 77, 0.15);
+      transform: scale(1.01);
+    }
+
+    .intro-foto-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .publico {
+      background: #0b0b0b;
+      text-align: center;
+      padding: 80px 0 100px;
+    }
+
+    .publico-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .publico-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .publico-row--top {
+      max-width: 100%;
+    }
+
+    .publico-row--bottom {
+      max-width: 600px;
+    }
+
+    .publico-item {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 28px 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(200, 148, 77, 0.12);
+      transition: 0.4s ease;
+      text-align: center;
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s, background 0.3s;
+      min-width: 0;
+    }
+
+    .publico-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .publico-item:hover {
+      border-color: #c8944d;
+      background: rgba(200, 148, 77, 0.06);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .publico-item .icon-avatar {
+      display: block;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .publico-item .icon-avatar svg {
+      width: 40px;
+      height: 40px;
+      fill: #c8944d;
+    }
+
+    .publico-item h3 {
+      color: #c8944d;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .publico-item p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin: 0;
+    }
+
+    .professores {
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    .professores h2 {
+      margin-bottom: 12px;
+    }
+
+    .card-prof {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 30px;
+      margin-bottom: 70px;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 24px 32px;
+      border-radius: 40px;
+      border: 1px solid rgba(200, 148, 77, 0.08);
+      transition: 0.3s;
+      text-align: left;
+    }
+
+    .card-prof:hover {
+      border-color: rgba(200, 148, 77, 0.3);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-4px);
+    }
+
+    .card-prof .foto-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+    }
+
+    .card-prof .foto-wrapper img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 30px;
+      border: 2px solid #c8944d;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      display: block;
+      object-fit: contain;
+      aspect-ratio: auto;
+      background: #0a0a0a;
+    }
+
+    .card-prof .info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-prof .info .nome {
+      font-size: 2.4rem;
+      color: #fff;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+      line-height: 1.2;
+    }
+
+    .card-prof .info p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-bottom: 2px;
+      text-align: left;
+    }
+
+    .card-prof .info p:first-of-type {
+      color: #c8944d;
+      font-weight: 500;
+    }
+
+    .card-prof .info .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #c8944d;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-top: 10px;
+      transition: 0.3s ease;
+      border-top: 1px solid rgba(200, 148, 77, 0.15);
+      padding-top: 12px;
+    }
+
+    .card-prof .info .instagram-link:hover {
+      color: #e6c179;
+      transform: translateX(4px);
+    }
+
+    .card-prof .info .instagram-link svg {
+      width: 24px;
+      height: 24px;
+      fill: #c8944d;
+      flex-shrink: 0;
+      transition: 0.3s ease;
+    }
+
+    .card-prof .info .instagram-link:hover svg {
+      fill: #e6c179;
+    }
+
+    /* Estrelas douradas - maiores */
+    .stars {
+      color: #f5c518;
+      font-size: 1.8rem;
+      letter-spacing: 4px;
+      margin-top: 14px;
+      display: flex;
+      gap: 4px;
+    }
+
+    .stars span {
+      display: inline-block;
+    }
+
+    .aprendizado {
+      background: #0d0d0d;
+      text-align: center;
+    }
+
+    .aprendizado .grid .box h3 {
+      font-size: 1.3rem;
+      line-height: 1.3;
+    }
+
+    .aprendizado .grid .box p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    .depoimentos {
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    .depoimentos .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    .depoimentos .depoimento-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 32px 28px;
+      border-radius: 40px;
+      border: 1px solid rgba(200, 148, 77, 0.12);
+      backdrop-filter: blur(2px);
+      transition: 0.35s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .depoimentos .depoimento-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .depoimentos .depoimento-card:hover {
+      border-color: #c8944d;
+      background: rgba(200, 148, 77, 0.06);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .depoimentos .depoimento-card .depoimento-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    /* Avatar dourado para depoimentos */
+    .depoimentos .depoimento-card .depoimento-header .avatar-gold {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid #c8944d;
+      background: radial-gradient(circle at 30% 30%, #f5d48a, #c8944d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(200, 148, 77, 0.3);
+    }
+
+    .depoimentos .depoimento-card .depoimento-header .avatar-gold svg {
+      width: 32px;
+      height: 32px;
+      fill: #1a1a1a;
+    }
+
+    .depoimentos .depoimento-card .depoimento-header .avatar-gold .inicial {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1;
+    }
+
+    .depoimentos .depoimento-card .depoimento-header .nome-depoente {
+      color: #c8944d;
+      font-weight: 600;
+      font-size: 1.1rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .depoimentos .depoimento-card p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      flex: 1;
+    }
+
+    .pilares {
+      background: #0b0b0b;
+      text-align: center;
+    }
+
+    .pilares .grid .box .icon-gold {
+      font-size: 1.8rem;
+      color: #c8944d;
+      display: inline-block;
+      margin-right: 12px;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .pilares .grid .box h3 {
+      font-size: 1.5rem;
+      display: inline-block;
+      vertical-align: middle;
+      margin-bottom: 0;
+    }
+
+    .pilares .grid .box p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-top: 10px;
+      clear: both;
+    }
+
+    .funciona {
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    .funciona .grid .box {
+      text-align: left;
+    }
+
+    .funciona .grid .box .icon-gold {
+      font-size: 1.8rem;
+      color: #c8944d;
+      display: inline-block;
+      margin-right: 12px;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    .funciona .grid .box h3 {
+      font-size: 1.3rem;
+      line-height: 1.3;
+      display: inline-block;
+      vertical-align: middle;
+      margin-bottom: 0;
+    }
+
+    .funciona .grid .box p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-top: 10px;
+      clear: both;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 40px 32px;
+      border-radius: 40px;
+      border: 1px solid rgba(200, 148, 77, 0.12);
+      backdrop-filter: blur(2px);
+      transition: 0.35s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s;
+      text-align: left;
+    }
+
+    .box.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .box:hover {
+      border-color: #c8944d;
+      background: rgba(200, 148, 77, 0.06);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .box h3 {
+      color: #c8944d;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .box p {
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+
+    /* === INVESTIMENTO === */
+    .investimento {
+      text-align: center;
+      background: radial-gradient(circle at 30% 30%, #121212, #070707);
+      border-top: 1px solid rgba(200, 148, 77, 0.1);
+      border-bottom: 1px solid rgba(200, 148, 77, 0.1);
+      padding: 80px 0;
+    }
+
+    .investimento .investimento-content {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .investimento .investimento-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      margin-top: 20px;
+    }
+
+    .investimento .investimento-left {
+      text-align: left;
+    }
+
+    .investimento .investimento-left .subtitulo {
+      font-size: 1.3rem;
+      font-weight: 300;
+      opacity: 0.7;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .investimento .investimento-left .titulo-investimento {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      line-height: 1.1;
+      color: #c8944d;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .investimento .investimento-left .diferenciais {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+    }
+
+    .investimento .investimento-left .diferenciais li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    .investimento .investimento-left .diferenciais li .check {
+      color: #c8944d;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .investimento .investimento-left .chamada {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      margin-top: 20px;
+      border-top: 1px solid rgba(200, 148, 77, 0.15);
+      padding-top: 20px;
+    }
+
+    .investimento .investimento-left .chamada strong {
+      color: #c8944d;
+      font-weight: 600;
+    }
+
+    .investimento .investimento-right {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 40px 36px;
+      border-radius: 40px;
+      border: 1px solid rgba(200, 148, 77, 0.15);
+      text-align: center;
+    }
+
+    .investimento .investimento-right .valor-label {
+      font-size: 0.9rem;
+      opacity: 0.6;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .investimento .investimento-right .valor {
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #c8944d;
+      line-height: 1.1;
+      margin: 8px 0 4px;
+    }
+
+    .investimento .investimento-right .valor span {
+      font-size: 2rem;
+      vertical-align: super;
+      margin-right: 4px;
+    }
+
+    .investimento .investimento-right .parcelas {
+      font-size: 0.95rem;
+      opacity: 0.6;
+      margin-bottom: 24px;
+    }
+
+    .investimento .investimento-right .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .investimento .investimento-right .btn-group .btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .investimento .investimento-right .btn-group .btn-secondary {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .investimento .investimento-right .btn-group .btn-secondary:hover {
+      background: rgba(200, 148, 77, 0.1);
+    }
+
+    .investimento .investimento-right .desconto {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #1a1a1a;
+      font-size: 0.9rem;
+      opacity: 0.5;
+      letter-spacing: 0.5px;
+    }
+
+    /* === RESPONSIVO === */
+    
+    /* Tablet */
+    @media (max-width: 992px) {
+      section {
+        padding: 60px 0;
+      }
+
+      .investimento {
+        padding: 60px 0;
+      }
+
+      .intro {
+        padding: 60px 0;
+      }
+
+      .intro h2 {
+        font-size: 2.4rem;
+      }
+
+      .intro-foto-wrapper {
+        max-width: 550px;
+      }
+
+      .publico {
+        padding: 60px 0 80px;
+      }
+
+      .section-divider {
+        width: 40px;
+        margin-bottom: 30px;
+      }
+
+      .publico-row--top {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .publico-row--top .publico-item {
+        flex: 1 1 calc(33.33% - 16px);
+        min-width: 200px;
+        max-width: 280px;
+      }
+
+      .publico-row--bottom {
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .publico-row--bottom .publico-item {
+        flex: 1 1 calc(50% - 12px);
+        min-width: 200px;
+        max-width: 280px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-image {
+        max-width: 450px;
+        justify-self: center;
+      }
+
+      .hero h1 {
+        font-size: 3.8rem;
+      }
+
+      .hero-icons {
+        justify-content: center;
+      }
+
+      .card-prof {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 28px 24px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+      }
+
+      .card-prof .foto-wrapper {
+        min-width: unset;
+        width: 100%;
+        max-width: 220px;
+      }
+
+      .card-prof .foto-wrapper img {
+        max-width: 100%;
+        margin: 0 auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+        border-radius: 30px;
+      }
+
+      .card-prof .info .nome {
+        text-align: center;
+        font-size: 2rem;
+      }
+
+      .card-prof .info p {
+        text-align: center;
+      }
+
+      .card-prof .info .instagram-link {
+        justify-content: center;
+      }
+
+      .stars {
+        justify-content: center;
+        font-size: 1.6rem;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .depoimentos .depoimentos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .investimento .investimento-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .investimento .investimento-left {
+        text-align: center;
+      }
+
+      .investimento .investimento-left .diferenciais li {
+        justify-content: center;
+      }
+
+      .investimento .investimento-left .titulo-investimento {
+        font-size: 3.5rem;
+      }
+
+      .investimento .investimento-right .valor {
+        font-size: 3.8rem;
+      }
+
+      .investimento .investimento-right {
+        padding: 35px 30px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .box {
+        text-align: center;
+      }
+
+      .pilares .grid .box .icon-gold {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 6px;
+      }
+
+      .pilares .grid .box h3 {
+        display: block;
+      }
+
+      .funciona .grid .box {
+        text-align: center;
+      }
+
+      .funciona .grid .box .icon-gold {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 6px;
+      }
+
+      .funciona .grid .box h3 {
+        display: block;
+      }
+
+      .publico-item .icon-avatar svg {
+        width: 34px;
+        height: 34px;
+      }
+
+      .depoimentos .depoimento-card {
+        text-align: center;
+      }
+
+      .depoimentos .depoimento-card .depoimento-header {
+        justify-content: center;
+      }
+    }
+
+    /* MOBILE - SOLUÇÃO DEFINITIVA */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: auto;
+        padding: 30px 15px;
+        align-items: center;
+      }
+
+      .hero-content {
+        padding: 10px 0;
+        gap: 25px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 6px;
+      }
+
+      .hero .subtitle {
+        font-size: 1rem;
+        margin-bottom: 12px;
+      }
+
+      .hero-image {
+        max-width: 300px;
+      }
+
+      .hero-icons {
+        display: none !important;
+      }
+
+      section {
+        padding: 40px 0;
+      }
+
+      .investimento {
+        padding: 40px 0;
+      }
+
+      .intro {
+        padding: 40px 0;
+      }
+
+      .intro h2 {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+      }
+
+      .intro-sub {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+        letter-spacing: 3px;
+      }
+
+      .intro-divider {
+        margin-bottom: 30px;
+        width: 40px;
+      }
+
+      .intro-foto-wrapper {
+        max-width: 100%;
+        border-radius: 20px;
+      }
+
+      .publico {
+        padding: 40px 0 60px;
+      }
+
+      .section-divider {
+        width: 40px;
+        margin-bottom: 30px;
+      }
+
+      .publico-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .publico-row--top .publico-item,
+      .publico-row--bottom .publico-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .publico-row--bottom {
+        max-width: 100%;
+      }
+
+      .btn {
+        padding: 12px 32px;
+        font-size: 0.9rem;
+      }
+
+      .btn-secondary {
+        padding: 12px 32px;
+        font-size: 0.9rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .card-prof {
+        padding: 20px 16px;
+        margin-bottom: 40px;
+        max-width: 100%;
+        grid-template-columns: 1fr;
+        text-align: center;
+        align-items: center;
+      }
+
+      .card-prof .foto-wrapper {
+        min-width: unset;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      .card-prof .foto-wrapper img {
+        max-width: 100%;
+        margin: 0 auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+        border-radius: 30px;
+      }
+
+      .card-prof .info .nome {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+
+      .card-prof .info p {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      .card-prof .info .instagram-link {
+        justify-content: center;
+      }
+
+      .stars {
+        justify-content: center;
+        font-size: 1.4rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .depoimentos .depoimentos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .investimento .investimento-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .investimento .investimento-left {
+        text-align: center;
+      }
+
+      .investimento .investimento-left .diferenciais li {
+        justify-content: center;
+      }
+
+      .investimento .investimento-left .titulo-investimento {
+        font-size: 2.5rem;
+      }
+
+      .investimento .investimento-right {
+        padding: 30px 24px;
+        max-width: 100%;
+        border-radius: 30px;
+      }
+
+      .investimento .investimento-right .valor {
+        font-size: 3rem;
+      }
+
+      .investimento .investimento-right .valor span {
+        font-size: 1.5rem;
+      }
+
+      .investimento .investimento-right .btn-group .btn,
+      .investimento .investimento-right .btn-group .btn-secondary {
+        font-size: 1rem;
+        padding: 14px 20px;
+      }
+
+      .box {
+        padding: 30px 24px;
+        text-align: center;
+      }
+
+      .box h3 {
+        font-size: 1.3rem;
+      }
+
+      .pilares .grid .box .icon-gold {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 6px;
+      }
+
+      .pilares .grid .box h3 {
+        display: block;
+      }
+
+      .funciona .grid .box {
+        text-align: center;
+      }
+
+      .funciona .grid .box .icon-gold {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 6px;
+      }
+
+      .funciona .grid .box h3 {
+        display: block;
+      }
+
+      .publico-item .icon-avatar svg {
+        width: 32px;
+        height: 32px;
+      }
+
+      .depoimentos .depoimento-card {
+        text-align: center;
+      }
+
+      .depoimentos .depoimento-card .depoimento-header {
+        justify-content: center;
+      }
+
+      .tag {
+        font-size: 0.75rem;
+        letter-spacing: 4px;
+        padding: 3px 16px;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* Mobile Pequeno */
+    @media (max-width: 480px) {
+      .hero {
+        padding: 20px 10px;
+      }
+
+      .hero-content {
+        padding: 5px 0;
+        gap: 18px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 4px;
+      }
+
+      .hero .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .hero-image {
+        max-width: 250px;
+      }
+
+      .tag {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        padding: 2px 12px;
+        margin-bottom: 8px;
+      }
+
+      .hero-icons {
+        display: none !important;
+      }
+
+      section {
+        padding: 30px 0;
+      }
+
+      .investimento {
+        padding: 30px 0;
+      }
+
+      .intro {
+        padding: 30px 0;
+      }
+
+      .intro h2 {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+
+      .intro-sub {
+        font-size: 0.75rem;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+      }
+
+      .intro-divider {
+        margin-bottom: 20px;
+        width: 30px;
+      }
+
+      .intro-foto-wrapper {
+        border-radius: 16px;
+      }
+
+      .publico {
+        padding: 30px 0 50px;
+      }
+
+      .section-divider {
+        width: 30px;
+        margin-bottom: 20px;
+      }
+
+      .publico-item {
+        padding: 20px 16px;
+      }
+
+      .publico-item .icon-avatar svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .publico-item h3 {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 10px 24px;
+        font-size: 0.85rem;
+      }
+
+      .btn-secondary {
+        padding: 10px 24px;
+        font-size: 0.85rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      .card-prof {
+        padding: 16px 12px;
+        border-radius: 30px;
+      }
+
+      .card-prof .foto-wrapper {
+        max-width: 150px;
+      }
+
+      .card-prof .foto-wrapper img {
+        max-width: 100%;
+        border-radius: 20px;
+        aspect-ratio: auto;
+        object-fit: contain;
+      }
+
+      .card-prof .info .nome {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .card-prof .info p {
+        font-size: 0.8rem;
+        text-align: center;
+      }
+
+      .card-prof .info .instagram-link {
+        justify-content: center;
+        font-size: 0.85rem;
+      }
+
+      .card-prof .info .instagram-link svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .stars {
+        font-size: 1.2rem;
+        justify-content: center;
+      }
+
+      .box {
+        padding: 24px 18px;
+        border-radius: 30px;
+      }
+
+      .box h3 {
+        font-size: 1.1rem;
+      }
+
+      .box p {
+        font-size: 0.85rem;
+      }
+
+      .investimento .investimento-left .subtitulo {
+        font-size: 1rem;
+      }
+
+      .investimento .investimento-left .titulo-investimento {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .investimento .investimento-left .diferenciais li {
+        font-size: 0.9rem;
+        justify-content: center;
+      }
+
+      .investimento .investimento-left .chamada {
+        font-size: 1rem;
+      }
+
+      .investimento .investimento-right {
+        padding: 24px 18px;
+        border-radius: 24px;
+      }
+
+      .investimento .investimento-right .valor {
+        font-size: 2.4rem;
+      }
+
+      .investimento .investimento-right .valor span {
+        font-size: 1.2rem;
+      }
+
+      .investimento .investimento-right .parcelas {
+        font-size: 0.85rem;
+      }
+
+      .investimento .investimento-right .btn-group .btn,
+      .investimento .investimento-right .btn-group .btn-secondary {
+        font-size: 0.9rem;
+        padding: 12px 16px;
+      }
+
+      .investimento .investimento-right .desconto {
+        font-size: 0.8rem;
+      }
+
+      footer {
+        padding: 30px 15px;
+        font-size: 0.8rem;
+      }
+
+      .pilares .grid .box .icon-gold {
+        font-size: 1.4rem;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 4px;
+      }
+
+      .pilares .grid .box h3 {
+        display: block;
+        font-size: 1.2rem;
+      }
+
+      .funciona .grid .box .icon-gold {
+        font-size: 1.4rem;
+        display: block;
+        margin-right: 0;
+        margin-bottom: 4px;
+      }
+
+      .funciona .grid .box h3 {
+        display: block;
+        font-size: 1.1rem;
+      }
+
+      .depoimentos .depoimento-card {
+        padding: 24px 18px;
+        text-align: center;
+      }
+
+      .depoimentos .depoimento-card .depoimento-header {
+        justify-content: center;
+      }
+
+      .depoimentos .depoimento-card .depoimento-header .avatar-gold {
+        width: 56px;
+        height: 56px;
+      }
+
+      .depoimentos .depoimento-card .depoimento-header .avatar-gold .inicial {
+        font-size: 1.6rem;
+      }
+
+      .depoimentos .depoimento-card .depoimento-header .avatar-gold svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .depoimentos .depoimento-card p {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Telas muito pequenas */
+    @media (max-width: 360px) {
+      .hero {
+        padding: 15px 8px;
+      }
+
+      .hero-content {
+        padding: 0;
+        gap: 12px;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+        margin-bottom: 4px;
+      }
+
+      .hero .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+      }
+
+      .hero-image {
+        max-width: 200px;
+      }
+
+      .tag {
+        font-size: 0.6rem;
+        padding: 2px 10px;
+        margin-bottom: 6px;
+        letter-spacing: 2px;
+      }
+
+      .hero-icons {
+        display: none !important;
+      }
+
+      .btn {
+        padding: 8px 18px;
+        font-size: 0.75rem;
+      }
+
+      .btn-secondary {
+        padding: 8px 18px;
+        font-size: 0.75rem;
+      }
+
+      .card-prof .foto-wrapper {
+        max-width: 120px;
+      }
+
+      .investimento .investimento-left .titulo-investimento {
+        font-size: 1.6rem;
+      }
+
+      .investimento .investimento-right .valor {
+        font-size: 2rem;
+      }
+
+      .investimento .investimento-right .valor span {
+        font-size: 1rem;
+      }
+
+      .investimento .investimento-right .btn-group .btn,
+      .investimento .investimento-right .btn-group .btn-secondary {
+        font-size: 0.75rem;
+        padding: 10px 12px;
+      }
+
+      .investimento .investimento-right {
+        padding: 18px 14px;
+      }
+    }
+
+    /* Ajustes para telas muito grandes */
+    @media (min-width: 1600px) {
+      .container {
+        max-width: 1400px;
+      }
+
+      .hero h1 {
+        font-size: 5rem;
+      }
+
+      .hero-image {
+        max-width: 650px;
+      }
+
+      .grid {
+        gap: 40px;
+      }
+
+      .intro-foto-wrapper {
+        max-width: 800px;
+      }
+
+      .depoimentos .depoimentos-grid {
+        gap: 40px;
+      }
+
+      .investimento .investimento-grid {
+        gap: 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      
+      <!-- Texto à esquerda -->
+      <div class="hero-text">
+        <span class="tag">✦ CURSO</span>
+        <h1>
+          DA AVALIAÇÃO<br />
+          <span>À INTERVENÇÃO</span>
+        </h1>
+        <p class="subtitle">Do entendimento à transformação.</p>
+        <div class="hero-icons">
+          <div>
+            <h3>Avaliação</h3>
+            <p>Com precisão</p>
+          </div>
+          <div>
+            <h3>Intervenção</h3>
+            <p>Com intencionalidade</p>
+          </div>
+          <div>
+            <h3>Impacto</h3>
+            <p>Que transforma</p>
+          </div>
+        </div>
+        <a href="#investimento" class="btn">QUERO PARTICIPAR</a>
+      </div>
+
+      <!-- Imagem à direita -->
+      <div class="hero-image">
+        <img src="imagens/trio.jpg" alt="Equipe Da Avaliação à Intervenção" />
+      </div>
+
+    </div>
+  </header>
+
+  <!-- INTRO COM FOTO DOS 3 -->
+  <section class="intro">
+    <div class="container">
+      <h2>
+        Do diagnóstico ao planejamento<br />
+        é o que você precisa para ter <strong>segurança profissional</strong>.
+      </h2>
+      <p class="intro-sub">✦ O caminho para a excelência ✦</p>
+      <div class="intro-divider"></div>
+      <div class="intro-foto-wrapper">
+        <img src="imagens/banner.jpg" alt="Equipe Da Avaliação à Intervenção" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PÚBLICO-ALVO -->
+  <section class="publico">
+    <div class="container">
+      <h2>Para quem é este curso?</h2>
+      <div class="section-divider"></div>
+      <div class="publico-grid">
+        <div class="publico-row publico-row--top">
+          <div class="publico-item">
+            <span class="icon-avatar">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"/>
+              </svg>
+            </span>
+            <h3>Segurança Profissional</h3>
+            <p>Quem quer ter segurança profissional</p>
+          </div>
+          <div class="publico-item">
+            <span class="icon-avatar">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"/>
+              </svg>
+            </span>
+            <h3>Direcionamento</h3>
+            <p>Quem quer direcionamento terapêutico</p>
+          </div>
+          <div class="publico-item">
+            <span class="icon-avatar">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"/>
+              </svg>
+            </span>
+            <h3>Construção da Infância</h3>
+            <p>Quem acredita que a infância é uma construção para a vida toda</p>
+          </div>
+        </div>
+        
+        <div class="publico-row publico-row--bottom">
+          <div class="publico-item">
+            <span class="icon-avatar">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"/>
+              </svg>
+            </span>
+            <h3>Início ou Aprimoramento</h3>
+            <p>Quem quer iniciar ou aprimorar sua prática</p>
+          </div>
+          <div class="publico-item">
+            <span class="icon-avatar">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"/>
+              </svg>
+            </span>
+            <h3>Diagnóstico</h3>
+            <p>Quem quer aprimorar seu conhecimento nos diagnósticos e intervenções</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFESSORES -->
+  <section class="professores">
+    <div class="container">
+      <h2>Quem vai te guiar</h2>
+      <div class="section-divider"></div>
+
+      <!-- MANU -->
+      <div class="card-prof">
+        <div class="foto-wrapper">
+          <img src="imagens/manu.png" alt="Emanuela" />
+        </div>
+        <div class="info">
+          <h2 class="nome">Emanuela</h2>
+          <p>Neuropsicopedagoga Clínica | Mestre em Educação</p>
+          <p>Especialista em Transtornos do Neurodesenvolvimento, ABA.</p>
+          <p>Mais de 7 anos de experiência clínica</p>
+          <p>Palestrante e mentora de profissionais da área</p>
+          <p>Apaixonada por desenvolvimento infantil e educação baseada na neurociência</p>
+          <div class="stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <a href="https://instagram.com/emanuela.schmidt.neuropp" target="_blank" class="instagram-link">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+            @emanuela.schmidt.neuropp
+          </a>
+        </div>
+      </div>
+
+      <!-- LETICIA -->
+      <div class="card-prof">
+        <div class="foto-wrapper">
+          <img src="imagens/leti.png" alt="Letícia" />
+        </div>
+        <div class="info">
+          <h2 class="nome">Letícia</h2>
+          <p>Psicóloga Infantojuvenil</p>
+          <p>Especialista em TCC na Infância e Adolescência</p>
+          <p>Especialista em Análise do Comportamento</p>
+          <p>Mestranda em Psicologia</p>
+          <p>Docente nas disciplinas de Avaliação Neuropsicológica e Supervisão Clínica na Atitus</p>
+          <div class="stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <a href="https://instagram.com/psico.leticiaribeiro" target="_blank" class="instagram-link">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+            @psico.leticiaribeiro
+          </a>
+        </div>
+      </div>
+
+      <!-- LUCCA -->
+      <div class="card-prof">
+        <div class="foto-wrapper">
+          <img src="imagens/lucca.png" alt="Lucca" />
+        </div>
+        <div class="info">
+          <h2 class="nome">Lucca</h2>
+          <p>Licenciatura em Música</p>
+          <p>Atua mais de 12 anos na educação</p>
+          <p>Especialista em Pesquisa Artística em Música</p>
+          <p>Especialista em Neurociência e Comportamento</p>
+          <p>Especialista em Musicoterapia</p>
+          <p>Docente na Pós Graduação em Educação Musical na Anhanguera/SP</p>
+          <p>Palestrante e mentor da área</p>
+          <div class="stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <a href="https://instagram.com/lucca.musicoterapeuta" target="_blank" class="instagram-link">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+            @lucca.musicoterapeuta
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APRENDIZADO -->
+  <section class="aprendizado">
+    <div class="container">
+      <h2>Como vamos te ensinar na prática</h2>
+      <div class="section-divider"></div>
+      <div class="grid">
+        <div class="box">
+          <h3>Entenda sobre diagnóstico na primeira infância</h3>
+          <p>Compreenda os principais sinais, marcos e instrumentos de avaliação utilizados na prática clínica.</p>
+        </div>
+        <div class="box">
+          <h3>Aprenda a fazer um planejamento terapêutico</h3>
+          <p>Desenvolva planos individualizados, defina objetivos significativos e escolha estratégias eficazes para cada criança.</p>
+        </div>
+        <div class="box">
+          <h3>Pratique com casos e exemplos práticos</h3>
+          <p>Aplique o conhecimento em situações reais, com análise de casos, correção de condutas e troca de experiências.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="depoimentos">
+    <div class="container">
+      <h2>Quem já aprendeu com a gente</h2>
+      <div class="section-divider"></div>
+      <div class="depoimentos-grid">
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="avatar-gold">
+              <span class="inicial">A</span>
+            </div>
+            <span class="nome-depoente">Ana</span>
+          </div>
+          <p>Psicóloga, trabalha em uma clínica multiprofissional e acredita que estar em atualização constante é o melhor caminho.</p>
+        </div>
+
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="avatar-gold">
+              <span class="inicial">M</span>
+            </div>
+            <span class="nome-depoente">Marcella</span>
+          </div>
+          <p>Neuropsicopedagoga em Brasília. Antes das mentorias com a Manu atendia a domicílio, após os encontros diz ter sua carreira transformada, hoje atua em uma clínica pediátrica referência na região. Acredita que uma prática baseada em evidências é a base para o sucesso.</p>
+        </div>
+
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="avatar-gold">
+              <span class="inicial">L</span>
+            </div>
+            <span class="nome-depoente">Luana</span>
+          </div>
+          <p>Neuropsicopedagoga, após as mentorias com o Lucca aprendeu mais sobre o desenvolvimento comportamental das crianças, aprendendo a observar potencialidades e habilidades através da observação das necessidades das crianças utilizando a música como ferramenta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILARES -->
+  <section class="pilares">
+    <div class="container">
+      <h2>Pilares do Curso</h2>
+      <div class="section-divider"></div>
+      <p style="max-width:700px;margin:0 auto 40px;opacity:0.7;font-size:1.05rem;">
+        Uma formação completa e transformadora, sustentada por <strong style="color:#c8944d;">três pilares essenciais</strong>:
+      </p>
+      <div class="grid">
+        <div class="box">
+          <span class="icon-gold">✦</span>
+          <h3>Ciência</h3>
+          <p>Base sólida em evidências científicas atualizadas, que sustentam cada etapa do aprendizado.</p>
+        </div>
+        <div class="box">
+          <span class="icon-gold">✦</span>
+          <h3>Prática Profissional</h3>
+          <p>Vivência prática e aplicada, conectando teoria e realidade para desenvolver competências essenciais.</p>
+        </div>
+        <div class="box">
+          <span class="icon-gold">✦</span>
+          <h3>Direcionamento</h3>
+          <p>Caminho claro e estruturado para orientar sua jornada, com propósito e foco em resultados significativos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="funciona">
+    <div class="container">
+      <h2>Como funciona o curso?</h2>
+      <div class="section-divider"></div>
+      <p style="max-width:650px;margin:0 auto 40px;opacity:0.7;font-size:1.05rem;">
+        Uma experiência completa, prática e transformadora para sua formação.
+      </p>
+      <div class="grid">
+        <div class="box">
+          <span class="icon-gold">✦</span>
+          <h3>Aula presencial de 8h</h3>
+          <p>Encontro presencial intensivo com 8 horas de duração, focado na prática, troca de experiências e aprendizado significativo.</p>
+        </div>
+        <div class="box">
+          <span class="icon-gold">✦</span>
+          <h3>Apostila em PDF</h3>
+          <p>Material completo e exclusivo disponibilizado em PDF para apoiar seus estudos antes, durante e depois do curso.</p>
+        </div>
+        <div class="box">
+          <span class="icon-gold">✦</span>
+          <h3>Presencial</h3>
+          <p>O curso acontece de forma presencial, promovendo conexão, networking e uma vivência prática e imersiva que faz toda a diferença.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTIMENTO -->
+  <section id="investimento" class="investimento">
+    <div class="container">
+      <div class="investimento-content">
+        <div class="investimento-grid">
+          <div class="investimento-left">
+            <p class="subtitulo">✦ INVESTIMENTO QUE</p>
+            <h2 class="titulo-investimento">transforma vidas!</h2>
+            
+            <ul class="diferenciais">
+              <li><span class="check">✦</span> Conteúdo atualizado e baseado em evidências</li>
+              <li><span class="check">✦</span> Metodologia prática e aplicável</li>
+              <li><span class="check">✦</span> Suporte e troca com profissionais da área</li>
+            </ul>
+
+            <p class="chamada">
+              <strong>Invista em você.</strong><br />
+              O futuro de muitas crianças começa<br />
+              com a sua escolha hoje!
+            </p>
+          </div>
+
+          <div class="investimento-right">
+            <p class="valor-label">VALOR</p>
+            <div class="valor"><span>R$</span> 997</div>
+            <p class="parcelas">ou em até 12x no cartão</p>
+
+            <div class="btn-group">
+              <a href="https://chk.eduzz.com/60E2D4A6W3" target="_blank" class="btn">COMPRAR AGORA</a>
+              <a href="https://wa.me/54991217031" target="_blank" class="btn-secondary">ENTRAR EM CONTATO</a>
+            </div>
+
+            <p class="desconto">DESCONTO ESPECIAL PARA GRUPOS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© Curso Da Avaliação à Intervenção</p>
+  </footer>
+
+  <script>
+    const boxes = document.querySelectorAll('.box');
+    const publicoItems = document.querySelectorAll('.publico-item');
+    const introFoto = document.querySelector('.intro-foto-wrapper');
+    const depoimentoCards = document.querySelectorAll('.depoimento-card');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    boxes.forEach(box => observer.observe(box));
+    publicoItems.forEach(item => observer.observe(item));
+    depoimentoCards.forEach(card => observer.observe(card));
+    if (introFoto) observer.observe(introFoto);
+  </script>
+
+</body>
+</html>
